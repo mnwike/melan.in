@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skin cream ingredient checker: spot hydroquinone and mercury | melan.in</title>
+<meta name="description" content="Paste a skincare product&#x27;s ingredient list to check for banned lightening agents such as hydroquinone, mercury and steroids, and find helpful ingredients.">
+<link rel="canonical" href="https://melan.in/ingredient-checker">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="melan.in">
+<meta property="og:title" content="Skin cream ingredient checker: spot hydroquinone and mercury">
+<meta property="og:description" content="Paste a skincare product&#x27;s ingredient list to check for banned lightening agents such as hydroquinone, mercury and steroids, and find helpful ingredients.">
+<meta property="og:url" content="https://melan.in/ingredient-checker">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Ingredient checker", "description": "Paste a skincare product's ingredient list to check for banned lightening agents such as hydroquinone, mercury and steroids, and find helpful ingredients.", "url": "https://melan.in/ingredient-checker", "applicationCategory": "HealthApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}</script>
+</head>
+<body>
+<div class="dark"><header class="bar"><a class="logo" href="/">melan<span>.in</span></a>
+<nav aria-label="Main"><a href="/guides">Guides</a><a href="/tools">Tools</a><a href="/childrens-curly-coily-hair">Children's hair</a><a href="/skin-lightening-creams">Product safety</a><a href="/guides#research">Research</a><a class="cta" href="/#join">Contribute</a></nav></header>
+<div class="hero"><p class="crumb"><a href="/tools">Tools</a></p><h1>Ingredient checker</h1><p class="lede">Paste the ingredient list from a product label. Nothing you type leaves your device.</p></div></div>
+<main>
+<form id="f"><label for="t" style="display:block;padding:0;font-weight:600">Ingredient list</label>
+<textarea id="t" placeholder="Aqua, glycerin, ..."></textarea>
+<button type="submit" style="margin-top:16px">Check ingredients</button></form>
+<div class="result" id="r" role="status" aria-live="polite"></div>
+<section><h2>What this checks</h2><p>It looks for ingredients that UK Trading Standards say should not be in cosmetics sold over the counter, and for ingredients with evidence for dryness and dark marks. A clean result does not make a product safe: illegal creams often leave ingredients off the label. No ingredient list at all is a warning sign.</p>
+<p class="small">Sources: <a href="https://www.tradingstandards.uk/news-policy-campaigns/news-room/2026/illegal-skin-lightening-products-being-sold-in-butchers-and-specialist-food-stores-across-the-uk/">Chartered Trading Standards Institute</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2921758/">Davis and Callender</a> · <a href="/skin-lightening-creams">Our guide to skin bleaching creams</a></p></section>
+<script>
+var BAD=[["hydroquinone","Hydroquinone","Legal in the UK only on prescription. Banned from cosmetics."],["mercur","Mercury compound","Banned. Absorbed through the skin and linked to kidney and nerve damage."],["calomel","Calomel (a mercury compound)","Banned."],["hydrargyr","Mercury compound","Banned."],["clobetasol","Clobetasol (strong steroid)","Prescription only. Thins the skin with long use."],["betamethasone","Betamethasone (strong steroid)","Prescription only."],["fluocinon","Fluocinonide (strong steroid)","Prescription only."],["fluocinolone","Fluocinolone (steroid)","Prescription only."],["dexamethasone","Dexamethasone (steroid)","Prescription only."]];
+var GOOD=[["ceramide","Ceramides","help seal water into dry skin"],["glycerin","Glycerin","draws water into the skin"],["petrolatum","Petrolatum","seals moisture in"],["butyrospermum","Shea butter","softens and seals"],["shea","Shea butter","softens and seals"],["niacinamide","Niacinamide","has evidence for fading dark marks"],["azelaic","Azelaic acid","has evidence for fading dark marks"],["ascorb","Vitamin C","has evidence for fading dark marks"],["kojic","Kojic acid","has evidence for fading dark marks"],["arbutin","Arbutin","has evidence for fading dark marks"],["retino","A retinoid","has evidence for dark marks; can irritate, so start slowly"],["glycyrrhiza","Liquorice extract","has evidence for fading dark marks"],["iron oxide","Iron oxides","block visible light, useful for melasma and dark marks"],["ci 77491","Iron oxides","block visible light, useful for melasma and dark marks"]];
+function esc(s){return s.replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c]})}
+document.getElementById("f").addEventListener("submit",function(e){e.preventDefault();var v=document.getElementById("t").value.toLowerCase();var r=document.getElementById("r");
+if(v.trim().length<3){r.innerHTML="<p>Paste an ingredient list first.</p>";return}
+var b={},g={};BAD.forEach(function(x){if(v.indexOf(x[0])>-1)b[x[1]]=x[2]});GOOD.forEach(function(x){if(v.indexOf(x[0])>-1)g[x[1]]=x[2]});
+var h="";var bk=Object.keys(b),gk=Object.keys(g);
+if(bk.length){h+="<h2>Do not use this without a prescription</h2><ul>"+bk.map(function(k){return '<li><span class="flag">'+esc(k)+".</span> "+b[k]+"</li>"}).join("")+'</ul><p>If this was sold over the counter in the UK, you can report it to the Citizens Advice consumer helpline on 0808 223 1133.</p>'}
+else{h+="<h2>No banned lightening ingredients listed</h2><p>That is reassuring but not proof. Illegal products often leave ingredients off the label.</p>"}
+if(gk.length){h+="<h3>Helpful ingredients found</h3><ul>"+gk.map(function(k){return "<li>"+esc(k)+": "+g[k]+"</li>"}).join("")+"</ul>"}
+r.innerHTML=h;r.scrollIntoView({behavior:"smooth",block:"nearest"})});
+</script>
+</main>
+<footer class="dark"><div class="bar"><p>melan.in gathers and explains published research. It is information, not medical advice. For a concern about your own skin or hair, see a doctor.</p><p>Every claim on this site links to its source.</p></div></footer>
+</body>
+</html>

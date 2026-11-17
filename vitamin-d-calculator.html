@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vitamin D calculator for dark skin (UK guidance) | melan.in</title>
+<meta name="description" content="Find the UK-recommended daily vitamin D amount for your age and skin tone. Based on government nutrition advice for people with dark skin.">
+<link rel="canonical" href="https://melan.in/vitamin-d-calculator">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="melan.in">
+<meta property="og:title" content="Vitamin D calculator for dark skin (UK guidance)">
+<meta property="og:description" content="Find the UK-recommended daily vitamin D amount for your age and skin tone. Based on government nutrition advice for people with dark skin.">
+<meta property="og:url" content="https://melan.in/vitamin-d-calculator">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Vitamin D guide", "description": "Find the UK-recommended daily vitamin D amount for your age and skin tone. Based on government nutrition advice for people with dark skin.", "url": "https://melan.in/vitamin-d-calculator", "applicationCategory": "HealthApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}</script>
+</head>
+<body>
+<div class="dark"><header class="bar"><a class="logo" href="/">melan<span>.in</span></a>
+<nav aria-label="Main"><a href="/guides">Guides</a><a href="/tools">Tools</a><a href="/childrens-curly-coily-hair">Children's hair</a><a href="/skin-lightening-creams">Product safety</a><a href="/guides#research">Research</a><a class="cta" href="/#join">Contribute</a></nav></header>
+<div class="hero"><p class="crumb"><a href="/tools">Tools</a></p><h1>Vitamin D guide</h1><p class="lede">Answer two questions to see what UK health guidance says for you or your child.</p></div></div>
+<main>
+<form id="f"><fieldset><legend>Age</legend>
+<label><input type="radio" name="a" value="baby">Baby under one year</label>
+<label><input type="radio" name="a" value="tot">Child aged one to four</label>
+<label><input type="radio" name="a" value="rest" checked>Aged four or over, including adults</label>
+</fieldset><fieldset><legend>Skin and sun</legend>
+<label><input type="checkbox" id="d" checked>Dark skin, for example African, African-Caribbean or South Asian background</label>
+<label><input type="checkbox" id="c">Rarely outdoors, or skin mostly covered outdoors</label>
+<label><input type="checkbox" id="fm">Baby has 500 ml or more of infant formula a day</label>
+</fieldset><button type="submit">Show the guidance</button></form>
+<div class="result" id="r" role="status" aria-live="polite"></div>
+<p class="small">Based on UK government advice. Other countries set different amounts. Ten micrograms equals 400 international units. Sources: <a href="https://www.gov.uk/guidance/vitamin-d-deficiency-migrant-health-guide">UK government guidance</a> · <a href="https://vegansociety.com/node/131734">summary of UK recommendations</a> · <a href="/vitamin-d-dark-skin">our vitamin D guide</a></p>
+<script>
+document.getElementById("f").addEventListener("submit",function(e){e.preventDefault();var a=document.querySelector("input[name=a]:checked").value;var d=document.getElementById("d").checked,c=document.getElementById("c").checked,fm=document.getElementById("fm").checked;var h;
+if(a=="baby"){h=fm?"<h2>No supplement needed for now</h2><p>Babies having 500 ml or more of infant formula a day do not need a supplement, because formula is already fortified.</p>":"<h2>8.5 to 10 micrograms a day, all year</h2><p>UK guidance is a daily supplement for babies from birth to one year who are breastfed or have less than 500 ml of formula a day.</p>"}
+else if(a=="tot"){h="<h2>10 micrograms a day, all year</h2><p>UK guidance is a daily supplement for all children aged one to four.</p>"}
+else if(d||c){h="<h2>Consider 10 micrograms a day, all year</h2><p>UK guidance advises year-round supplements for people with dark skin and for people who get little sun on their skin.</p>"}
+else{h="<h2>Consider 10 micrograms a day in autumn and winter</h2><p>That is the UK advice for everyone aged four and over, from October to March.</p>"}
+document.getElementById("r").innerHTML=h+"<p>Do not take more than the label dose unless a clinician advises it. A pharmacist can check it against other medicines.</p>"});
+</script>
+</main>
+<footer class="dark"><div class="bar"><p>melan.in gathers and explains published research. It is information, not medical advice. For a concern about your own skin or hair, see a doctor.</p><p>Every claim on this site links to its source.</p></div></footer>
+</body>
+</html>

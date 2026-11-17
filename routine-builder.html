@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skin and hair routine builder for Black and brown skin | melan.in</title>
+<meta name="description" content="Choose your skin and hair concerns to get an evidence-based routine: which ingredient types to look for, what to avoid, and which guides to read.">
+<link rel="canonical" href="https://melan.in/routine-builder">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="melan.in">
+<meta property="og:title" content="Skin and hair routine builder for Black and brown skin">
+<meta property="og:description" content="Choose your skin and hair concerns to get an evidence-based routine: which ingredient types to look for, what to avoid, and which guides to read.">
+<meta property="og:url" content="https://melan.in/routine-builder">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Skin and hair routine builder", "description": "Choose your skin and hair concerns to get an evidence-based routine: which ingredient types to look for, what to avoid, and which guides to read.", "url": "https://melan.in/routine-builder", "applicationCategory": "HealthApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}</script>
+</head>
+<body>
+<div class="dark"><header class="bar"><a class="logo" href="/">melan<span>.in</span></a>
+<nav aria-label="Main"><a href="/guides">Guides</a><a href="/tools">Tools</a><a href="/childrens-curly-coily-hair">Children's hair</a><a href="/skin-lightening-creams">Product safety</a><a href="/guides#research">Research</a><a class="cta" href="/#join">Contribute</a></nav></header>
+<div class="hero"><p class="crumb"><a href="/tools">Tools</a></p><h1>Skin and hair routine builder</h1><p class="lede">Pick your concerns and where you live. You get ingredient types and habits, not brand names. Brand reviews will follow once our method is published.</p></div></div>
+<main>
+<form id="f"><fieldset><legend>Skin</legend>
+<label><input type="checkbox" value="dry">Dry or ashy skin</label>
+<label><input type="checkbox" value="marks">Dark marks after spots or scratches</label>
+<label><input type="checkbox" value="melasma">Melasma or patchy darkening on the face</label>
+<label><input type="checkbox" value="bumps">Razor bumps or ingrown hairs</label>
+<label><input type="checkbox" value="eczema">Eczema-prone or easily irritated skin</label>
+</fieldset><fieldset><legend>Hair and scalp</legend>
+<label><input type="checkbox" value="break">Dry hair or breakage</label>
+<label><input type="checkbox" value="edges">Thinning edges</label>
+<label><input type="checkbox" value="scalp">Flaky or itchy scalp</label>
+</fieldset><fieldset><legend>Where you live</legend>
+<label><input type="checkbox" value="cold">A cold or low-sun country, such as the UK, northern Europe or Canada</label>
+</fieldset><button type="submit">Build my routine</button></form>
+<div class="result" id="r" role="status" aria-live="polite"></div>
+<p class="small">General information, not personal medical advice. Introduce one new product at a time and stop anything that stings or burns.</p>
+<script>
+var T={"razor-bumps": "Razor bumps and ingrown hairs", "dark-marks-hyperpigmentation": "Dark marks after spots, cuts and rashes", "melasma": "Melasma", "dry-ashy-skin": "Dry and ashy skin", "eczema-on-dark-skin": "Eczema on darker skin", "sunscreen-skin-cancer-dark-skin": "Sun, sunscreen and skin cancer", "traction-alopecia": "Thinning edges and traction alopecia", "ccca-hair-loss": "Hair loss from the crown (CCCA)", "itchy-flaky-scalp": "Itchy, flaky scalp", "hair-relaxers-health": "Relaxers and your health", "childrens-curly-coily-hair": "A parent's guide to curly and coily hair", "childs-hair-different-from-yours": "When your child's hair is different from yours", "braids-and-tension-in-children": "Braids, extensions and tension in children", "scalp-ringworm-children": "Scalp ringworm in children", "skin-lightening-creams": "Skin bleaching: what is in the creams", "colourism": "Colourism", "vitamin-d-dark-skin": "Vitamin D for people with dark skin", "should-i-see-a-dermatologist": "Should I see a dermatologist?", "routine-builder": "Skin and hair routine builder", "ingredient-checker": "Ingredient checker", "vitamin-d-calculator": "Vitamin D guide", "cold-climate": "Dark skin in a cold climate"};
+var D={dry:["Dry or ashy skin",["Gentle, lipid-rich cleanser in place of soap","Cream or ointment on slightly damp skin after washing","Look for ceramides, glycerin, petrolatum or shea butter"],"dry-ashy-skin"],
+marks:["Dark marks",["Treat the cause first: spots, eczema or ingrown hairs","Daily tinted sunscreen with iron oxides","One fading ingredient at a time: azelaic acid, niacinamide, vitamin C or a retinoid","Avoid scrubs, picking and unlabelled lightening creams"],"dark-marks-hyperpigmentation"],
+melasma:["Melasma",["Tinted sunscreen with iron oxides every day, including indoors near windows","Ask a GP or dermatologist about prescription treatment","Avoid home peels and lasers offered without a skin assessment"],"melasma"],
+bumps:["Razor bumps",["Clippers that leave about 1 mm of stubble, or a single-blade razor","Wet and soften hair before shaving","Shave with the grain and do not stretch the skin"],"razor-bumps"],
+eczema:["Eczema-prone skin",["Fragrance-free moisturiser, used generously and often","Short, lukewarm washes with a gentle cleanser","See a GP for flares: prescribed creams work and limit marks afterwards"],"eczema-on-dark-skin"],
+"break":["Dry hair or breakage",["Condition every wash and detangle wet, never dry","Keep product on the lengths and ends, not piled on the scalp","Reduce heat and chemical straightening"],"childrens-curly-coily-hair"],
+edges:["Thinning edges",["Loosen every style, especially at the hairline","Braids out within two to three months, weaves within six to eight weeks","See a doctor if it continues"],"traction-alopecia"],
+scalp:["Flaky or itchy scalp",["Wash the scalp every one to two weeks with an anti-dandruff shampoo","Condition the lengths afterwards","Stop oiling or greasing the scalp"],"itchy-flaky-scalp"],
+cold:["Living in a cold or low-sun country",["Consider 10 micrograms of vitamin D a day, all year, as UK guidance advises for people with dark skin","Switch to thicker moisturisers in winter"],"vitamin-d-dark-skin"]};
+document.getElementById("f").addEventListener("submit",function(e){e.preventDefault();var c=[].slice.call(document.querySelectorAll("#f input:checked"));var r=document.getElementById("r");
+if(!c.length){r.innerHTML="<p>Choose at least one concern.</p>";return}
+r.innerHTML="<h2>Your routine</h2>"+c.map(function(x){var d=D[x.value];return "<h3>"+d[0]+"</h3><ul>"+d[1].map(function(i){return "<li>"+i+"</li>"}).join("")+'</ul><p><a href="/'+d[2]+'">Read the guide: '+T[d[2]]+"</a></p>"}).join("");r.scrollIntoView({behavior:"smooth",block:"nearest"})});
+</script>
+</main>
+<footer class="dark"><div class="bar"><p>melan.in gathers and explains published research. It is information, not medical advice. For a concern about your own skin or hair, see a doctor.</p><p>Every claim on this site links to its source.</p></div></footer>
+</body>
+</html>
