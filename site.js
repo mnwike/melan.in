@@ -1,5 +1,5 @@
 (function(){
-var ENDPOINT="";/* set to a form endpoint to switch the sign-up on */
+var ENDPOINT="https://formsubmit.co/ajax/martin@nwike.com";/* FormSubmit relays each sign-up by email; swap in the alias string after activation */
 var preview=/[?&]signup=preview/.test(location.search);
 if(!ENDPOINT&&!preview)return;
 try{if(!preview&&localStorage.getItem("mel_signup"))return}catch(e){}
@@ -11,6 +11,7 @@ d.innerHTML='<form method="dialog" style="margin:0"><button class="mel-x" value=
 '<label>Email<input name="email" type="email" autocomplete="email" required></label>'+
 '<label>Phone <span class="mel-o">optional</span><input name="phone" type="tel" autocomplete="tel"></label>'+
 '<label>Anything you would like to ask? <span class="mel-o">optional</span><textarea name="enquiry" rows="3"></textarea></label>'+
+'<input name="_honey" tabindex="-1" autocomplete="off" style="display:none">'+
 '<label class="mel-c"><input type="checkbox" name="consent" required><span>Yes, email me news and offers from melan.in. See our <a href="/privacy">privacy notice</a>.</span></label>'+
 '<p id="mel-m" role="status" aria-live="polite"></p><button type="submit" class="mel-b">Sign me up</button></form>';
 document.body.appendChild(d);
@@ -21,7 +22,7 @@ if(!f.name.value.trim()||!/^\S+@\S+\.\S+$/.test(f.email.value)){m.textContent="A
 if(!f.consent.checked){m.textContent="Tick the box so we know you want to hear from us.";return}
 if(!ENDPOINT){m.textContent="Preview only: sign-up is not connected yet, so nothing was sent.";return}
 m.textContent="Sending…";
-fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({name:f.name.value,email:f.email.value,phone:f.phone.value,enquiry:f.enquiry.value,consent:true,page:location.pathname})})
+fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({_subject:"melan.in sign-up: "+f.name.value,_template:"table",_captcha:"false",_honey:f._honey.value,name:f.name.value,email:f.email.value,phone:f.phone.value||"not given",enquiry:f.enquiry.value||"none",consent:"Yes, ticked on "+new Date().toISOString(),page:location.href})})
 .then(function(r){if(!r.ok)throw 0;f.innerHTML="<p><strong>Thank you.</strong> You are on the list.</p>";done()})
 .catch(function(){m.textContent="That did not send. Please try again in a moment."})});
 if(d.showModal)d.showModal();else d.setAttribute("open","")}
