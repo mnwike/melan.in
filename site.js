@@ -1,5 +1,5 @@
 (function(){
-var ENDPOINT="https://formsubmit.co/ajax/martin@nwike.com";/* FormSubmit relays each sign-up by email; swap in the alias string after activation */
+var ENDPOINT="https://formsubmit.co/ajax/fb22f0b890a08d7382639123bc2b5703";/* FormSubmit relays each sign-up by email; the alias hides the inbox address */
 var preview=/[?&]signup=preview/.test(location.search);
 if(!ENDPOINT&&!preview)return;
 try{if(!preview&&localStorage.getItem("mel_signup"))return}catch(e){}
