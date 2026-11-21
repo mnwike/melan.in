@@ -1,4 +1,18 @@
 (function(){
+/* Analytics: Google Analytics 4 with consent. Nothing personal is sent; form contents never go to analytics. */
+var GA="G-2D8TDM0TTS";
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;
+var ok=null;try{ok=localStorage.getItem("mel_consent")}catch(e){}
+gtag("consent","default",{analytics_storage:ok==="1"?"granted":"denied",ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied"});
+gtag("js",new Date());gtag("config",GA);
+var gs=document.createElement("script");gs.async=true;gs.src="https://www.googletagmanager.com/gtag/js?id="+GA;document.head.appendChild(gs);
+window.melTrack=function(n,p){try{gtag("event",n,p||{})}catch(e){}};
+if(ok===null){var b=document.createElement("div");b.id="mel-ck";b.setAttribute("role","region");b.setAttribute("aria-label","Cookies");
+b.innerHTML='<p>We would like to count visits with Google Analytics so we know which guides are useful. No adverts. <a href="/privacy">Privacy notice</a>.</p><div><button type="button" data-c="1">Allow</button><button type="button" data-c="0">No thanks</button></div>';
+b.addEventListener("click",function(ev){var c=ev.target.getAttribute&&ev.target.getAttribute("data-c");if(c===null)return;try{localStorage.setItem("mel_consent",c)}catch(e){}
+if(c==="1"){gtag("consent","update",{analytics_storage:"granted"});melTrack("consent_granted")}b.remove()});
+document.body.appendChild(b)}
+document.addEventListener("click",function(ev){var t=ev.target.closest&&ev.target.closest("a[href*='amazon.co.uk']");if(t)melTrack("amazon_click",{link_url:t.href,page_path:location.pathname})});
 var ENDPOINT="https://formsubmit.co/ajax/fb22f0b890a08d7382639123bc2b5703";/* FormSubmit relays each sign-up by email; the alias hides the inbox address */
 var preview=/[?&]signup=preview/.test(location.search);
 var seen=false;try{seen=!!localStorage.getItem("mel_signup")}catch(e){}
@@ -13,7 +27,7 @@ d.innerHTML='<form method="dialog" style="margin:0"><button class="mel-x" value=
 '<input name="_honey" tabindex="-1" autocomplete="off" style="display:none">'+
 '<label class="mel-c"><input type="checkbox" name="consent" required><span>Yes, email me news and offers from melan.in. See our <a href="/privacy">privacy notice</a>.</span></label>'+
 '<p id="mel-m" role="status" aria-live="polite"></p><button type="submit" class="mel-b">Sign me up</button></form>';
-document.body.appendChild(d);if(topic){d.querySelector("p strong").textContent=topic}
+document.body.appendChild(d);melTrack("signup_open",{topic:topic||"timed pop-up",page_path:location.pathname});if(topic){d.querySelector("p strong").textContent=topic}
 function done(){try{localStorage.setItem("mel_signup","1")}catch(e){}}
 d.addEventListener("close",function(){done();d.remove()});
 d.querySelector("#mel-f").addEventListener("submit",function(e){e.preventDefault();var f=e.target,m=d.querySelector("#mel-m");
@@ -22,7 +36,7 @@ if(!f.consent.checked){m.textContent="Tick the box so we know you want to hear f
 if(!ENDPOINT){m.textContent="Preview only: sign-up is not connected yet, so nothing was sent.";return}
 m.textContent="Sending…";
 fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({_subject:"melan.in sign-up: "+f.name.value,_template:"table",_captcha:"false",_honey:f._honey.value,name:f.name.value,email:f.email.value,phone:f.phone.value||"not given",enquiry:f.enquiry.value||"none",interest:topic||"general sign-up",consent:"Yes, ticked on "+new Date().toISOString(),page:location.href})})
-.then(function(r){if(!r.ok)throw 0;f.innerHTML="<p><strong>Thank you.</strong> You are on the list.</p>";done()})
+.then(function(r){if(!r.ok)throw 0;melTrack("generate_lead",{topic:topic||"general sign-up",page_path:location.pathname,gave_phone:f.phone.value?"yes":"no",asked_question:f.enquiry.value?"yes":"no"});f.innerHTML="<p><strong>Thank you.</strong> You are on the list.</p>";done()})
 .catch(function(){m.textContent="That did not send. Please try again in a moment."})});
 if(d.showModal)d.showModal();else d.setAttribute("open","")}
 document.addEventListener("click",function(ev){var t=ev.target.closest&&ev.target.closest("[data-signup]");if(t){ev.preventDefault();open(t.getAttribute("data-signup"))}});
